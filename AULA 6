@@ -1,0 +1,28 @@
+> autoplot(inflacao, main="Índie de Preços ao Consumidor Amplo")
+> resumo_Estatístico <- summary(inflacao)
+> MA3 <- arima(inflacao,order=c(0,0,3))
+> ARMA13 <- arima(Inflacao,order = c(1,0,3))
+> ARMA13 <- arima(inflacao,order = c(1,0,3))
+> Box.test(ARMA13$residuals,lag = 3, type = "Ljung")
+
+	Box-Ljung test
+
+data:  ARMA13$residuals
+X-squared = 0.026171, df = 3, p-value = 0.9989
+
+> TesteJB13 <- Box.test(ARMA13$residuals,lag = 3, type = "Ljung")
+> MA1 <- arima(inflacao,order = c(0,0,1))
+> MA2 <- arima(inflacao,order = c(0,0,2))
+> MA3 <- arima(inflacao,order = c(0,0,3))
+> TesteJB1 <- Box.test(MA1$residuals,lag = 3, type = "Ljung")
+> TesteJB2 <- Box.test(MA2$residuals,lag = 3, type = "Ljung")
+> TesteJB3 <- Box.test(MA3$residuals,lag = 3, type = "Ljung")
+> P_Valores <- c(TesteJB1$p.value,TesteJB2$p.value,TesteJB3$p.value)
+> Modelos <- c("MA1","MA2","MA3")
+> esultados <- data.frame(Modelos,P_Valores)
+> resultados <- data.frame(Modelos,P_Valores)
+> View(Resultados)
+> View(resultados)
+> autoplot(inflacao, main="Índice de Preços ao Consumidor Amplo")
+> 
+> 
